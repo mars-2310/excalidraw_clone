@@ -12,6 +12,7 @@
     "@repo/backend-common": "workspace:*",
     "@types/bcrypt": "^6.0.0",
     "bcrypt": "^6.0.0",
+    "esbuild": "^0.25.9",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2"
   },

@@ -99,10 +99,30 @@ app.post("/room", middleware, async (req,res) => {
       return;
     }
 
-    res.json({
-      roomId: "123"
-    })
+    const userId = req.userId;
+
+
+    try{
+        const room = await prismaClient.room.create({
+          data: {
+            slug: data.data.name,
+            adminId: userId
+          }
+        });
+
+        res.json({
+          roomId: room.id
+        })
+    } catch(e) {
+        res.json({
+          message: "Room already exists"
+        })
+    };
   
   });
+
+app.get("/room/:slug", middleware, async (req, res) => {
+
+});
 
   app.listen(3001);
